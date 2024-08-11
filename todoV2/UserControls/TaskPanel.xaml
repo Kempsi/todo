@@ -1,0 +1,118 @@
+﻿<UserControl x:Class="todoV2.UserControls.TaskPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:todoV2.UserControls" 
+             xmlns:converters="clr-namespace:todoV2.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="105" d:DesignWidth="600">
+
+    <UserControl.Resources>
+        <converters:ToUpperConverter x:Key="ToUpperConverter"/>
+    </UserControl.Resources>
+
+
+    <Button Background="White" BorderBrush="Transparent" 
+            Click="btn_Click" x:Name="mainButton" 
+            MouseDoubleClick="mainButton_MouseDoubleClick" 
+            MouseEnter="mainButton_MouseEnter" 
+            MouseLeave="mainButton_MouseLeave" PreviewMouseLeftButtonDown="mainButton_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="mainButton_PreviewMouseLeftButtonUp">
+        
+        <Button.Template>
+            <ControlTemplate TargetType="Button">
+                
+                <Border Background="{TemplateBinding Background}" 
+                        CornerRadius="15" Height="90" Width="600" 
+                        Margin="0,15,0,0" x:Name="brd_Background">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="400"/>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45"/>
+                            <RowDefinition Height="45"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="3">
+                            <Image Source="{Binding StatusImageSource}" Width="50" Margin="15,10,0,0"/>
+
+                            <Label Content="{Binding Title}"
+                                   VerticalContentAlignment="Center"
+                                   HorizontalContentAlignment="Left"
+                                   VerticalAlignment="Bottom"
+                                   FontSize="22"
+                                   FontFamily="Agency FB" 
+                                   Height="34" 
+                                   Width="335"/>
+
+                            <Label Content="{Binding Deadline}"
+                                   ContentStringFormat="dd/MM/yyyy"
+                                   VerticalContentAlignment="Center"
+                                   HorizontalContentAlignment="Left"
+                                   VerticalAlignment="Bottom"
+                                   FontSize="22"
+                                   FontFamily="Agency FB" 
+                                   Height="34"
+                                   Width="110"/>
+
+                            <Image Source="{Binding FavoriteImageSource}" Width="50" Margin="15,8,0,8"/>
+
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="1" Orientation="Horizontal" Grid.ColumnSpan="3">
+
+                            <Label Content="{Binding Category, Converter={StaticResource ToUpperConverter}}"
+                                   Foreground="#FF6D6D6D"
+                                   VerticalContentAlignment="Center"
+                                   HorizontalContentAlignment="Left"
+                                   FontSize="20"
+                                   FontFamily="Agency FB" 
+                                   Height="45" 
+                                   Width="150" 
+                                   Margin="65,0,0,0"/>
+
+                            <Image Source="{Binding ProgressImageSource}" Width="50" Margin="310,5,0,10"/>
+
+                        </StackPanel>
+
+                    </Grid>
+
+                </Border>
+
+                <!--<ControlTemplate.Triggers>
+                    <EventTrigger RoutedEvent="Button.MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetName="brd_Background" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="#FFCFCFCF" Duration="0:0:0.0"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="Button.MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetName="brd_Background" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="White" Duration="0:0:0.0"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+
+                    <Trigger Property="IsPressed" Value="True">
+                        <Setter TargetName="brd_Background" Property="Background" Value="#FF707070"/>
+                    </Trigger>
+
+
+
+                </ControlTemplate.Triggers>-->
+
+            </ControlTemplate>
+        </Button.Template>
+    </Button>
+    
+
+
+
+</UserControl>

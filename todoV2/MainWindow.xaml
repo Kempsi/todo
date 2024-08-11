@@ -1,0 +1,252 @@
+﻿<Window x:Class="todoV2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:todoV2" xmlns:UserControls="clr-namespace:todoV2.UserControls"
+        mc:Ignorable="d" SizeToContent="WidthAndHeight" ContentRendered="Window_ContentRendered"
+        Title="todo" Height="870" Width="1000" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="3"/>
+            <RowDefinition Height="764"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3"/>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition Width="3"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Viivat -->
+        <Rectangle Fill="Black" Grid.Column="0" Grid.Row="0" Grid.RowSpan="4"/>
+        <Rectangle Fill="Black" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4"/>
+        <Rectangle Fill="Black" Grid.Column="2" Grid.Row="0" Grid.RowSpan="4"/>
+        <Rectangle Fill="Black" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3"/>
+        <Rectangle Fill="Black" Grid.Row="4" VerticalAlignment="Center" Height="4" HorizontalAlignment="Left" Width="1000" Grid.ColumnSpan="4"/>
+
+
+
+        <!-- Kempsi-boksi -->
+        <Rectangle Grid.Column="1" Grid.Row="1">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF001251"/>
+                    <GradientStop Color="#FF010933" Offset="1"/>
+                    <GradientStop Color="#E500239D" Offset="0.414"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <Label Grid.Column="1" Content="todo" 
+               HorizontalAlignment="Center" Grid.Row="1" 
+               VerticalAlignment="Top" Height="66" Width="98" 
+               FontFamily="pack://application:,,,/Fonts/#karantina" 
+               Foreground="White" FontSize="48" 
+               VerticalContentAlignment="Center" 
+               HorizontalContentAlignment="Center" Margin="0,4,0,0"/>
+
+
+        <!-- Vasemman menun tausta-boksi -->
+        <Rectangle Fill="#FF5C5C5C" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Height="764"/>
+
+
+        <!-- Tumma tausta -->
+        <Rectangle Grid.Row="1" Grid.Column="3" Grid.RowSpan="3">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF343434"/>
+                    <GradientStop Color="#FF636363" Offset="1"/>
+                    <GradientStop Color="#FF2E2E2E" Offset="0.581"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+
+
+
+        <Border BorderThickness="2" Grid.Row="1" Grid.Column="3" Grid.RowSpan="3" Margin="10,10,10,10"
+        CornerRadius="25,25,25,25" BorderBrush="Black" x:Name="Tasks_Today">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFB5B5B5" Offset="0"/>
+                    <GradientStop Color="#FFB5B5B5" Offset="1"/>
+                    <GradientStop Color="#FEDCDCDC" Offset="0.232"/>
+                    <GradientStop Color="#FEDCDCDC" Offset="0.875"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+
+
+
+            <ListView Background="Transparent" 
+                      BorderBrush="Transparent"
+                      Margin="20,131,20,20"
+                      SelectionMode="Single"
+                      VirtualizingPanel.ScrollUnit="Pixel"
+                      x:Name="listView">
+
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListViewItem">
+                                    <ContentPresenter />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+
+            </ListView>
+
+
+
+
+        </Border>
+
+
+        <StackPanel Grid.Row="1" 
+                    Grid.Column="3" 
+                    Grid.RowSpan="3"
+                    Margin="12,12,357,646">
+
+
+
+            <Label x:Name="lbl_MainTitle"
+                   Grid.Row="1" 
+                   Grid.Column="3"
+                   Content="Today"
+                   FontSize="50"
+                   FontFamily="Agency FB" 
+                   Margin="20,20,0,0" 
+                   Width="290"/>
+
+            <Label x:Name="lbl_CurrentDate"
+                   Grid.Row="1" 
+                   Grid.Column="3"
+                   Content="Wednesday, May 5 2024"
+                   FontSize="25"
+                   FontFamily="Agency FB" 
+                   Margin="25,0,0,0" Width="290"/>
+
+
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="1" 
+                    Grid.Column="3" 
+                    Grid.RowSpan="3"
+                    Margin="362,12,10,646">
+
+            <Label Grid.Row="1" 
+                   Grid.Column="3"
+                   Content="Deadline"
+                   FontSize="25"
+                   FontFamily="Agency FB" 
+                   Margin="-40,90,0,0" Width="110"/>
+
+        </StackPanel>
+
+
+
+
+
+
+        <!-- Stackpanel napeille -->
+        <StackPanel Grid.Column="1" Grid.Row="3" Margin="5,0,5,0">
+
+            <UserControls:FilterButton Margin="5,12,5,5"
+                                       ImageSource="../Icons/today_Icon.png"
+                                       Title="Today"
+                                       x:Name="Today" 
+                                       ButtonClick="Today_ButtonClick"/>
+
+            <UserControls:FilterButton Margin="5,10,5,5"
+                                       ImageSource="../Icons/tomorrow_Icon.png"
+                                       Title="Upcoming"
+                                       x:Name="Upcoming" 
+                                       ButtonClick="Upcoming_ButtonClick"/>
+
+            <UserControls:FilterButton Margin="5,10,5,5"
+                                       ImageSource="../Icons/past_Icon.png"
+                                       Title="Past"
+                                       x:Name="Past" 
+                                       ButtonClick="Past_ButtonClick"/>
+
+            <UserControls:FilterButton Margin="5,10,5,5"
+                                       ImageSource="../Icons/favouriteChecked_Icon.png"
+                                       Title="Important" 
+                                       x:Name="Important" 
+                                       ButtonClick="Important_ButtonClick"/>
+
+            <UserControls:FilterButton Margin="5,10,5,5"
+                                       ImageSource="../Icons/toDo_Icon.png"
+                                       Title="To do"
+                                       x:Name="ToDo" 
+                                       ButtonClick="ToDo_ButtonClick"/>
+
+            <UserControls:FilterButton Margin="5,10,5,5"
+                                       ImageSource="../Icons/inProgress_Icon.png"
+                                       Title="In progress"
+                                       x:Name="InProgress" 
+                                       ButtonClick="InProgress_ButtonClick"/>
+
+            <UserControls:FilterButton Margin="5,10,5,5"
+                                       ImageSource="../Icons/done_Icon.png"
+                                       Title="Done"
+                                       x:Name="Done" 
+                                       ButtonClick="Done_ButtonClick"/>
+
+            <UserControls:FilterButton Margin="5,10,5,5"
+                                       ImageSource="../Icons/all_Icon.png"
+                                       Title="All tasks"
+                                       x:Name="AllTasks" 
+                                       ButtonClick="AllTasks_ButtonClick"/>
+
+            <Rectangle Fill="#FF424242" Height="2" Margin="0,10,0,10"/>
+
+
+            <UserControls:FilterButton Margin="5,5,5,5"
+                                       ImageSource="../Icons/category_Icon.png"
+                                       Title="School"
+                                       x:Name="School" 
+                                       ButtonClick="School_ButtonClick"/>
+
+            <UserControls:FilterButton Margin="5,10,5,5"
+                                       ImageSource="../Icons/category_Icon.png"
+                                       Title="Personal"
+                                       x:Name="Personal" 
+                                       ButtonClick="Personal_ButtonClick"/>
+
+            <UserControls:FilterButton Margin="5,10,5,5"
+                                       ImageSource="../Icons/category_Icon.png"
+                                       Title="Work"
+                                       x:Name="Work" 
+                                       ButtonClick="Work_ButtonClick"/>
+
+            <UserControls:FilterButton Margin="5,10,5,5"
+                                       ImageSource="../Icons/category_Icon.png"
+                                       Title="Other"
+                                       x:Name="Other" 
+                                       ButtonClick="Other_ButtonClick"/>
+
+
+            <UserControls:AddTaskButton Margin="0,10,0,10" 
+                                        ButtonClick="AddTask_ButtonClick"/>
+
+
+
+
+        </StackPanel>
+
+        <Border Background="#FF5C5C5C" Grid.Column="3" Grid.Row="3" Height="4" Margin="38,60,55,699" CornerRadius="5"/>
+        <Border Background="#FF5C5C5C" Grid.Column="3" Grid.Row="3" Height="4" Margin="38,730,55,30" CornerRadius="5"/>
+
+
+    </Grid>
+</Window>

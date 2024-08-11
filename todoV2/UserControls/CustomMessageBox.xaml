@@ -1,0 +1,51 @@
+﻿<Window x:Class="todoV2.UserControls.CustomMessageBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:todoV2.UserControls"
+        mc:Ignorable="d"
+        Title="Title" Height="150" Width="250" 
+        WindowStartupLocation="CenterOwner" 
+        ResizeMode="NoResize" 
+        Background="#FFC6C6C6">
+
+    <Grid>
+        <TextBlock x:Name="DeleteTask" 
+                   Text="Delete task:" 
+                   VerticalAlignment="Top" 
+                   HorizontalAlignment="Center" 
+                   TextWrapping="Wrap"
+                   FontFamily="Agency FB"
+                   FontSize="22" Margin="0,10,0,0"/>
+        
+        <TextBlock x:Name="MessageTextBlock" 
+                   Text="TaskName" 
+                   VerticalAlignment="Top" 
+                   HorizontalAlignment="Center" 
+                   TextWrapping="Wrap"
+                   FontFamily="Agency FB"
+                   FontSize="22" Margin="0,41,0,0"/>
+
+
+        <StackPanel Orientation="Horizontal" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Bottom">
+
+            <Button Style="{DynamicResource MyCustomButton}"   
+                    Content="Yes" Width="70" 
+                    Margin="10,10,0,10" 
+                    FontFamily="Agency FB"
+                    FontSize="22"
+                    Click="YesButton_Click" 
+                    />
+
+            <Button Style="{DynamicResource MyCustomButton}"
+                    Content="No" Width="70" 
+                    Margin="10"
+                    FontFamily="Agency FB"
+                    FontSize="22"
+                    Click="NoButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

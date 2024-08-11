@@ -1,0 +1,97 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Fonts\jaldi.ttf" />
+    <None Remove="Fonts\karantina.ttf" />
+    <None Remove="Fonts\karantinaLight.ttf" />
+    <None Remove="Icons\all_Icon.png" />
+    <None Remove="Icons\category_Icon.png" />
+    <None Remove="Icons\checkMarkChecked_Icon.png" />
+    <None Remove="Icons\checkMarkUnchecked_Icon.png" />
+    <None Remove="Icons\circle_Icon.png" />
+    <None Remove="Icons\done_Icon.png" />
+    <None Remove="Icons\favouriteChecked_Icon.png" />
+    <None Remove="Icons\favouriteUnchecked_Icon.png" />
+    <None Remove="Icons\inProgressWhite_Icon.png" />
+    <None Remove="Icons\inProgress_Icon.png" />
+    <None Remove="Icons\notInProgress_Icon.png" />
+    <None Remove="Icons\past_Icon.png" />
+    <None Remove="Icons\today_Icon.png" />
+    <None Remove="Icons\todoIconV2.ico" />
+    <None Remove="Icons\toDo_Icon.png" />
+    <None Remove="Icons\tomorrow_Icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Fonts\jaldi.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\karantina.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\karantinaLight.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <PackageReference Include="MySqlConnector" Version="2.3.7" />
+    <Resource Include="Icons\all_Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\done_Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\favouriteChecked_Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\favouriteUnchecked_Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\notInProgress_Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\past_Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\today_Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\todoIconV2.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\toDo_Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\tomorrow_Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\category_Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\checkMarkChecked_Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\checkMarkUnchecked_Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\circle_Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\inProgressWhite_Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\inProgress_Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+</Project>
