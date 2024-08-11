@@ -1,6 +1,10 @@
 # todo
 To do list app, version 2
+_______________________________________________________
 
+Database DDL script is included in main.
+
+_______________________________________________________
 
 - Started originally 14.5.2024, but after taking a bit too big of a leap, decided to start over vith V2.
 
