@@ -1,5 +1,6 @@
 # todo
-To do list app, version 2
+- C# WPF Desktop
+- To do list app, version 2
 _______________________________________________________
 
 ![pic1](https://github.com/user-attachments/assets/51811b14-d2c2-4c29-97a7-19b530679748)
