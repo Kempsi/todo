@@ -1,25 +1,16 @@
-﻿using System.Text;
+﻿using System.Configuration;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
-using ToDoListApp.Entitys;
 using ToDoListApp.Repos;
-using todoV2.UserControls;
 using todoV2.Windows;
 
 namespace todoV2
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+	/// <summary>
+	/// Interaction logic for MainWindow.xaml
+	/// </summary>
+	public partial class MainWindow : Window
     {
         private DispatcherTimer timer;
         private string currentCategory;
@@ -36,18 +27,31 @@ namespace todoV2
             timer.Tick += TimerTick;
             timer.Start();
 
-            
+			EncryptAppConfig();
 
-        }
+		}
 
+		#region Encrypt AppConfig
 
+		private void EncryptAppConfig()
+		{
+			var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
-        #region Window icon
+			if (!config.ConnectionStrings.SectionInformation.IsProtected)
+			{
+				config.ConnectionStrings.SectionInformation.ProtectSection("DataProtectionConfigurationProvider");
+				config.Save();
+			}
+		}
 
-        private void SetWindowIcon()
+		#endregion Encrypt AppConfig once
+
+		#region Window icon
+
+		private void SetWindowIcon()
         {
-            this.Icon = new BitmapImage(new Uri("F:\\Visual Studio Enterprise 2022 projektit\\Oman ajan extra tehtäviä\\todoV2\\todoV2\\Icons\\todoIconV2.ico"));
-        }
+			this.Icon = new BitmapImage(new Uri("pack://application:,,,/Icons/todoIconV2.ico"));
+		}
 
         #endregion Window icon
 
