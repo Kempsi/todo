@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Configuration;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -36,18 +37,30 @@ namespace todoV2
             timer.Tick += TimerTick;
             timer.Start();
 
-            
+            EncryptAppConfig();
 
-        }
+		}
 
+		#region Encrypt AppConfig
+		private void EncryptAppConfig()
+		{
+			var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
+			if (!config.ConnectionStrings.SectionInformation.IsProtected)
+			{
+				config.ConnectionStrings.SectionInformation.ProtectSection("DataProtectionConfigurationProvider");
+				config.Save();
+			}
+		}
 
-        #region Window icon
+		#endregion Encrypt AppConfig once
 
-        private void SetWindowIcon()
+		#region Window icon
+
+		private void SetWindowIcon()
         {
-            this.Icon = new BitmapImage(new Uri("F:\\Visual Studio Enterprise 2022 projektit\\Oman ajan extra tehtäviä\\todoV2\\todoV2\\Icons\\todoIconV2.ico"));
-        }
+			this.Icon = new BitmapImage(new Uri("pack://application:,,,/Icons/todoIconV2.ico"));
+		}
 
         #endregion Window icon
 

@@ -1,5 +1,6 @@
 ﻿using MySqlConnector;
 using System.Collections.ObjectModel;
+using System.Configuration;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -12,11 +13,11 @@ namespace ToDoListApp.Repos
 {
     public static class DBRepo
     {
-        private const string localWithDB = "Server=127.0.0.1; Port=3306; User ID=user; Pwd=password; Database=ToDoListDB;";
+        private static string localWithDB = ConfigurationManager.ConnectionStrings["sqlConnection"].ConnectionString;
 
-        #region Collections
+	    #region Collections
 
-        public static ObservableCollection<MyTask> tasks = new ObservableCollection<MyTask>();
+	    public static ObservableCollection<MyTask> tasks = new ObservableCollection<MyTask>();
         public static ObservableCollection<TaskPanel> todayTaskPanels = new ObservableCollection<TaskPanel>();
         public static ObservableCollection<TaskPanel> upcomingTaskPanels = new ObservableCollection<TaskPanel>();
         public static ObservableCollection<TaskPanel> pastTaskPanels = new ObservableCollection<TaskPanel>();
