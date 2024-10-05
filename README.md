@@ -33,6 +33,8 @@ Tasks also have deadlines and can be favourited.
 "todo" is ran with a local database, the one I used was MariaDB with HeidiSQL.
 Connection string is local and very generic and most likely not the right way to do it :D
 
+*UPDATE 5.10.2024 - Learned how to hide and encrypt connection string in a config file, even though it's public in commit history. Oh well.
+
 Source code for the project was a mix of old knowledge and new. A lot of experimenting with AI recommended code 
 and tips. Some of it even was straight up copied over, because I did not understand the concept,
 but somehow made it work and some of it I still don't crasp fully.
