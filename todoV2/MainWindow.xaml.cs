@@ -17,10 +17,11 @@ namespace todoV2
 
         public MainWindow()
         {
-            InitializeComponent();
+			currentCategory = "Upcoming";
+			InitializeComponent();
             RefreshFrontPage();
             SetWindowIcon();
-            currentCategory = "Today";
+            
 
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);

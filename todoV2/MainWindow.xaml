@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:todoV2" xmlns:UserControls="clr-namespace:todoV2.UserControls"
         mc:Ignorable="d" SizeToContent="WidthAndHeight" ContentRendered="Window_ContentRendered"
-        Title="todo" Height="870" Width="1000" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="todo" Height="870" Width="1000" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -120,7 +120,7 @@
             <Label x:Name="lbl_MainTitle"
                    Grid.Row="1" 
                    Grid.Column="3"
-                   Content="Today"
+                   Content="Upcoming"
                    FontSize="50"
                    FontFamily="Agency FB" 
                    Margin="20,20,0,0" 
