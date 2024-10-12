@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
+using ToDoListApp.Entitys;
 using ToDoListApp.Repos;
 using todoV2.Windows;
 
@@ -17,7 +18,7 @@ namespace todoV2
 
         public MainWindow()
         {
-			currentCategory = "Upcoming";
+            CheckToday();
 			InitializeComponent();
             RefreshFrontPage();
             SetWindowIcon();
@@ -67,16 +68,33 @@ namespace todoV2
 
         #region Refresh methods
 
+        // Shows Today category if there are items with todays deadline
+        private void CheckToday()
+        {
+			currentCategory = "Upcoming";
+
+			var tasks = DBRepo.GetTasks();
+
+            if (tasks.Any(task => task.Deadline.Date == DateTime.Today))
+            {  
+                currentCategory = "Today";
+			}
+
+        }
+
+        // Updates current date to the label
         private void UpdateCurrentDate()
         {
             lbl_CurrentDate.Content = DateTime.Now.ToString("f");
         }
 
+        // Timer for updating date
         private void TimerTick(object sender, EventArgs e)
         {
             UpdateCurrentDate();
         }
 
+        // Refreshes all of the UI
         public void RefreshFrontPage()
         {
             DBRepo.CreateTaskPanels();
@@ -101,6 +119,7 @@ namespace todoV2
 
         }
 
+        // Sets the correct category depending on current category
         private void SetCorrectGategory()
         {
             listView.Items.Clear();
@@ -108,13 +127,15 @@ namespace todoV2
             switch (currentCategory)
             {
                 case "Today":
-                    foreach (var panel in DBRepo.todayTaskPanels)
+					lbl_MainTitle.Content = "Today";
+					foreach (var panel in DBRepo.todayTaskPanels)
                     {
                         listView.Items.Add(panel);
                     }
                     break;
                 case "Upcoming":
-                    foreach (var panel in DBRepo.upcomingTaskPanels)
+					lbl_MainTitle.Content = "Upcoming";
+					foreach (var panel in DBRepo.upcomingTaskPanels)
                     {
                         listView.Items.Add(panel);
                     }
@@ -182,6 +203,7 @@ namespace todoV2
             }
         }
 
+        // Updates the icon amounts for side panel
         private void UpdateAmounts()
         {
             Today.Amount = DBRepo.todayTaskPanels.Count;
@@ -199,11 +221,13 @@ namespace todoV2
             
         }
 
-        #endregion Refresh methods
+		#endregion Refresh methods
 
-        #region Filter buttons
+		#region Filter buttons
 
-        private void Today_ButtonClick(object sender, RoutedEventArgs e)
+		// Filters for each of the buttons
+
+		private void Today_ButtonClick(object sender, RoutedEventArgs e)
         {
             currentCategory = "Today";
             RefreshFrontPage();
