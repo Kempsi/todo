@@ -75,7 +75,8 @@ namespace todoV2
 
 			var tasks = DBRepo.GetTasks();
 
-            if (tasks.Any(task => task.Deadline.Date == DateTime.Today))
+            if (tasks.Any(task => task.Deadline.Date == DateTime.Today 
+                               && task.Status != MyTask.TaskStatus.done))
             {  
                 currentCategory = "Today";
 			}
